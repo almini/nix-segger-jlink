@@ -25,6 +25,10 @@
 
     in {
 
+      overlays.default = final: prev: {
+        segger-jlink = prev.callPackage ./segger-jlink.nix { };
+      };
+
       packages = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};
         in rec {
